@@ -1,0 +1,14 @@
+## Title: Per Hour
+## Author: Luigi311
+## Version: 0.0.1
+## Description: Calculate how much of a specific item/currency you are getting per hour
+## APIVersion: 101037 101038
+## AddOnVersion: 001
+## DependsOn: LibCustomMenu
+## IsLibrary: false
+## SavedVariables: PerHourAddonSavedVariables
+
+libs\LibCustomMenu\LibCustomMenu.lua
+
+PerHour.lua
+PerHour.xml

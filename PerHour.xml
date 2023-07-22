@@ -1,0 +1,35 @@
+<GuiXml>
+    <Controls>
+        <TopLevelControl name="PerHourAddonIndicator" mouseEnabled="true" movable="true" clampedToScreen="true">
+            <Dimensions x="200" y="25" />
+            <Anchor point="BOTTOM" relativeTo="GuiRoot" relativePoint="CENTER" offsetY="-20" />
+        
+            <OnMoveStop>
+                PerHourAddon.OnIndicatorMoveStop()
+            </OnMoveStop>
+
+            <Controls>
+                <Label name="$(parent)Gold" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" color="FF0000"
+                    wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER">
+                    <Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" />
+                </Label>
+                
+                <Label name="$(parent)AP" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" color="FF0000"
+                    wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER">
+                    <Anchor point="TOP" relativeTo="$(parent)Gold" relativePoint="BOTTOM" />
+                </Label>
+
+                <Label name="$(parent)Telvar" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" color="FF0000"
+                    wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER">
+                    <Anchor point="TOP" relativeTo="$(parent)AP" relativePoint="BOTTOM" />
+                </Label>
+
+                <Label name="$(parent)Item" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" color="FF0000"
+                    wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER">
+                    <Anchor point="TOP" relativeTo="$(parent)Telvar" relativePoint="BOTTOM" />
+                </Label>
+
+            </Controls>
+        </TopLevelControl>
+    </Controls>
+</GuiXml>
