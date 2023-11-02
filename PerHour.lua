@@ -9,6 +9,10 @@ local function log(msg)
     d("Per Hour: " .. msg)
 end
 
+local function cleanName(name)
+    return string.match(name, "([^%^]+)") -- Removing ^ and everything after
+end
+
 -- Handle seting the item to track
 local LCM = LibCustomMenu
 
@@ -79,18 +83,22 @@ end
 function PerHourAddon.TrackItem(itemLink)
     PerHourAddon.Reset()
     PerHourAddon.itemTrack = itemLink
-    PerHourAddon.itemName = GetItemLinkName(itemLink)
+    PerHourAddon.itemName = cleanName(GetItemLinkName(itemLink))
     log("Tracking: " .. PerHourAddon.itemTrack)
 end
 
 
 function PerHourAddon.OnLootReceived(eventCode, receivedBy, itemLink, quantity, soundCategory, lootType, isStolen)
-    local receivedByWithoutAppend = string.match(receivedBy, "([^%^]+)") -- Removing ^ and everything after
+    if PerHourAddon.itemTrack == Nil then
+        return
+    end
+    
+    local receivedByWithoutAppend = cleanName(receivedBy)
     if receivedByWithoutAppend ~= GetUnitName("player") then
         return
     end
 
-    if GetItemLinkName(itemLink) ~= PerHourAddon.itemName then
+    if cleanName(GetItemLinkName(itemLink)) ~= PerHourAddon.itemName then
         return
     end
 
@@ -149,6 +157,7 @@ function PerHourAddon.Reset()
     PerHourAddon.ap = 0
     PerHourAddon.item = 0
     PerHourAddon.itemTrack = Nil
+    PerHourAddon.itemName = ""
 
     PerHourAddon.UpdateUI()
 end
