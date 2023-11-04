@@ -65,7 +65,7 @@ function PerHourAddon.OnAPUpdate(eventCode, newAlliancePoints, playSound, differ
         return
     end
 
-    PerHourAddon.ap = PerHourAddon.ap + newAlliancePoints - oldAlliancePoints
+    PerHourAddon.ap = PerHourAddon.ap + difference
     PerHourAddon.UpdateUI()
 end
 
